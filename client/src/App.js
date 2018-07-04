@@ -1,39 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+//import HomePage from './HomePage';
+//import Dummy from './Dummy';
+//import MyBadges from './MyBadges';
+//import Myapps from './Myapps';
+import Myapps from './Myapps';
+import MyTables from './MyTables';
+import Grid from '@material-ui/core/Grid'
 
 class App extends Component {
 
     constructor(props) {
+        // THIS IS A COMMENT
         super(props);
         this.state = {
-            elasticHealth:null,
+           Nickname: "Eugenie",
+           lastName: "Patel",
+           MiddleName: "Zehui"
+
         };
     }
-    componentDidMount() {
-        fetch("http://localhost/api/v1")
-            .then(res => res.json())
-            .then(body => this.setState({
-                elasticHealth:body
-            }));
-    }
+
     render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit!!!! <code>src/App.js</code> and save to reload.
-        </p>
-          {this.state.elasticHealth
-              ?
-              <div>Elasticsearch Version: {this.state.elasticHealth.version.number}</div>
-              :
-              <div>No connection to elasticsearch :(</div>
-          }
-      </div>
+      <div>
+        <Myapps/>
+        {/* <MyTables/> */}
+        <MyTables Grid container justify="center" style={{height: '200px'}}/>
+
+
+      </div> 
+     
     );
   }
 }
