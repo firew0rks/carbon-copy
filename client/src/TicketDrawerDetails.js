@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import CardSuggestions from './CardSuggestions';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
-import FormField from './FormField';
+import FormField2 from './FormField2';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
@@ -52,11 +52,11 @@ class TicketDrawer extends React.Component {
               </Grid>
 
               <Grid container>
-                <FormField label="Short Description" value="Hello World"/>
-                <FormField label="Application" value="Hello World"/>
-                <FormField label="Caller" value="Hello World"/>
-                <FormField label="State" value="Hello World"/>
-                <FormField label="Problem Abstract" value="Hello World"/>
+                <FormField2 label="Short Description" value="Hello World"/>
+                <FormField2 label="Application" value="Hello World"/>
+                <FormField2 label="Caller" value="Hello World"/>
+                <FormField2 label="State" value="Hello World"/>
+                <FormField2 label="Problem Abstract" value="Hello World"/>
               </Grid>
 
             </Grid>
