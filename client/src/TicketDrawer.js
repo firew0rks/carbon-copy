@@ -21,14 +21,17 @@ class TicketDrawer extends React.Component {
     status: Ticket._source.status,
     problemAbstract: Ticket._source.problem_abstract
   };
+  _closeTickets(){
+      this.props.setCCopyTicket({})
+      this.props.onClose()
 
-
+  }
   render() {
     const { classes } = this.props;
     return (
       <div>
 
-        <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={this.props.onClose()}>
+        <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={()=>this._closeTickets()}>
           <div style={{padding: '15px 25px', width: '650px'}}>
             <Grid container>
               <Grid item xs={12}>
@@ -36,20 +39,24 @@ class TicketDrawer extends React.Component {
                   Incident
                 </div>
                 <div style={{fontSize: 32}}>
-                  INCXXXXXXX01
+                    INC{this.props.ticket.ticket_number}
                 </div>
               </Grid>
 
-              <Grid container>
-                <Grid item xs={4}>
-                  <CardSuggestions/>
-                </Grid>
-                <Grid item xs={4}>
-                  <CardSuggestions/>
-                </Grid>
-                <Grid item xs={4}>
-                  <CardSuggestions/>
-                </Grid>
+                <Grid container>
+
+                {this.props.ccopyTicketsList
+                    .map((suggestion)=>{
+                    return (
+                        <Grid item xs={4}>
+                            <CardSuggestions
+                                suggestion={suggestion}
+                                setCCopyTicket={(ticket)=>{this.props.setCCopyTicket(ticket)}}
+                             />
+                        </Grid>
+                    )
+                    })
+                }
               </Grid>
 
 
@@ -58,11 +65,10 @@ class TicketDrawer extends React.Component {
               </Grid>
               <Divider style={{width: '100%', marginBottom: '20px'}}/>
 
-              <FormField label="Short Description" value="Hello World"/>
-              <FormField label="Application" value="Hello World"/>
-              <FormField label="Caller" value="Hello World"/>
-              <FormField label="State" value="Hello World"/>
-              <FormField label="Problem Abstract" value="Hello World"/>
+                <FormField label="Problem Abstract" value={this.props.ticket.problem_abstract}/>
+              <FormField label="Application" value={this.props.ticket.Application}/>
+              <FormField label="Workfolder" value={this.props.ticket.workfolder}/>
+              <FormField label="State" value={this.props.ticket.status}/>
 
               <Paper>
                 <Tabs value={1} indicatorColor="primary" textColor="primary" centered >
@@ -73,11 +79,11 @@ class TicketDrawer extends React.Component {
                 </Tabs>
               </Paper>
 
-              <FormField label="Short Description" value="Hello World"/>
-              <FormField label="Application" value="Hello World"/>
-              <FormField label="Caller" value="Hello World"/>
-              <FormField label="State" value="Hello World"/>
-              <FormField label="Problem Abstract" value="Hello World"/>
+              <FormField label="Date Created" value={this.props.ticket.date_created}/>
+              <FormField label="Problem Type" value={this.props.ticket.problem_type}/>
+              <FormField label="Owner" value={this.props.ticket.owner}/>
+              <FormField label="Queue" value={this.props.ticket.queue}/>
+              <FormField label="Product" value={this.props.ticket.product}/>
 
             </Grid>
           </div>

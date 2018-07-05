@@ -11,8 +11,24 @@ import { tickets } from './ticketData';
 
 
 class MyTables extends React.Component{
+
+    constructor(props) {
+        // THIS IS A COMMENT
+        super(props);
+        this.state = {
+        };
+        this._selectTicket = this._selectTicket.bind(this);
+
+    }
+
+  _selectTicket(ticket){
+    this.props.setTicket(ticket);
+    this.props.onOpen()
+    this.props.getCCopySuggestions(ticket)
+  }
+
   render() {
-    return(
+      return(
       <Grid container justify="center" alignItems="center" style={{height: 'calc(100vh - 150px)'}}>
           <Paper>
             <Table>
@@ -25,34 +41,25 @@ class MyTables extends React.Component{
                   <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Problem type</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{tickets[0]._source.ticket_number}</TableCell>
-                  <TableCell>{tickets[0]._source.status}</TableCell>
-                  <TableCell>{tickets[0]._source.date_created}</TableCell>
-                  <TableCell>{tickets[0]._source.problem_abstract}</TableCell>
-                  <TableCell>{tickets[0]._source.problem_type}</TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{tickets[1]._source.ticket_number}</TableCell>
-                  <TableCell>{tickets[1]._source.status}</TableCell>
-                  <TableCell>{tickets[1]._source.date_created}</TableCell>
-                  <TableCell>{tickets[1]._source.problem_abstract}</TableCell>
-                  <TableCell>{tickets[1]._source.problem_type}</TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{tickets[1]._source.ticket_number}</TableCell>
-                  <TableCell>{tickets[1]._source.status}</TableCell>
-                  <TableCell>{tickets[1]._source.date_created}</TableCell>
-                  <TableCell>{tickets[1]._source.problem_abstract}</TableCell>
-                  <TableCell>{tickets[1]._source.problem_type}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+                <TableBody>
+
+                {this.props.ticketsList
+                    .map((ticket) => {
+                  return(
+                    <TableRow
+                    onClick={()=>{this._selectTicket(ticket)}}
+                    >
+                    <TableCell>INC{ticket.ticket_number}</TableCell>
+                    <TableCell>{ticket.status}</TableCell>
+                    <TableCell>{ticket.date_created}</TableCell>
+                    <TableCell>{ticket.problem_abstract}</TableCell>
+                    <TableCell>{ticket.problem_type}</TableCell>
+                    </TableRow>
+                  )
+                })}
+                    </TableBody>
+
+                      </Table>
           </Paper>
       </Grid>
     );
