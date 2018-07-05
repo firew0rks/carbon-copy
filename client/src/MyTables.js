@@ -20,6 +20,10 @@ class MyTables extends React.Component{
         };
         this._selectTicket = this._selectTicket.bind(this);
 
+
+        this._generateRandomPredictions();
+        this._generateRandomSimilarity();
+
     }
 
   _selectTicket(ticket){
@@ -30,9 +34,25 @@ class MyTables extends React.Component{
     this.props.setCCopyTicket({})
   }
 
-  _randomPrediction() {
+  _generateRandomPredictions() {
+      this.random = [];
+
+      for (let i = 0; i < 10; i++) {
+        this.random.push((Math.floor(Math.random() * 51) + 50));
+      }
+  }
+
+  _generateRandomSimilarity() {
+    this.similar = [];
+
+    for (let i = 0; i < 10; i++) {
+      this.similar.push((Math.floor(Math.random() * 51) + 50));
+    }
+  }
+
+  _randomPrediction(rand) {
       // Between 50 and 100
-      const rand = Math.floor(Math.random() * 51) + 50;
+      // const rand = Math.floor(Math.random() * 51) + 50;
 
     if (rand > 80) {
       return <Chip label={<b>{rand + '%'}</b>} style={{backgroundColor: '#66bb6a', color: 'white'}}/>
@@ -65,6 +85,7 @@ class MyTables extends React.Component{
   }
 
   render() {
+      console.log('rendering');
       return(
       <Grid container justify="center" alignItems="center" style={{marginTop: 30}}>
           <Paper>
@@ -72,6 +93,7 @@ class MyTables extends React.Component{
               <TableHead>
                 <TableRow>
                   <TableCell>Prediction</TableCell>
+                  <TableCell>Similarity</TableCell>
                   <TableCell>Status</TableCell>
                   <TableCell>Date created</TableCell>
                   <TableCell>Problem abstract</TableCell>
@@ -82,12 +104,13 @@ class MyTables extends React.Component{
                 <TableBody>
 
                 {this.props.ticketsList
-                    .map((ticket) => {
+                    .map((ticket, i) => {
                   return(
                     <TableRow hover style={{cursor: 'pointer'}}
                     onClick={()=>{this._selectTicket(ticket)}}
                     >
-                      <TableCell>{this._randomPrediction()}</TableCell>
+                      <TableCell>{this._randomPrediction(this.random[i])}</TableCell>
+                      <TableCell>{this._randomSimilarity(this.similar[i])}</TableCell>
                     <TableCell>INC{ticket.ticket_number}</TableCell>
                     <TableCell>{ticket.status}</TableCell>
                     <TableCell>{ticket.date_created}</TableCell>
