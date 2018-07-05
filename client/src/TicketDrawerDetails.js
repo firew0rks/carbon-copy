@@ -32,8 +32,6 @@ class TicketDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(classes);
-    console.log(classes.root);
     return (
       <div>
 
@@ -41,25 +39,69 @@ class TicketDrawer extends React.Component {
                 variant="persistent"
         >
           <div style={{padding: '15px 25px', width: '650px'}}>
-            <Grid container>
-              <Grid item xs={12}>
-                <div style={{fontSize: 14, color: '#C6C6C6'} }>
-                  Suggested Incident Ticket
-                </div>
-                <div style={{fontSize: 32}}>
-                  INCXXXXXXX01
-                </div>
-              </Grid>
-
+              {this.props.ccopyTicket.ticket &&
               <Grid container>
-                <FormField2 label="Short Description" value="Hello World"/>
-                <FormField2 label="Application" value="Hello World"/>
-                <FormField2 label="Caller" value="Hello World"/>
-                <FormField2 label="State" value="Hello World"/>
-                <FormField2 label="Problem Abstract" value="Hello World"/>
-              </Grid>
+                  <Grid item xs={12}>
+                      <div style={{fontSize: 14, color: '#C6C6C6'}}>
+                          Suggested Incident Ticket
+                      </div>
+                      <div style={{fontSize: 32}}>
+                          INC{this.props.ccopyTicket.ticket.ticket_number}
+                      </div>
+                  </Grid>
 
-            </Grid>
+                  <Grid container>
+                      <FormField2 label="Problem Abstract" value={this.props.ccopyTicket.ticket.problem_abstract}
+                                  copyField={() => this.props.copyField({
+                                      key: "problem_abstract",
+                                      value: this.props.ccopyTicket.ticket.problem_abstract
+                                  })}/>
+                      <FormField2 label="Application" value={this.props.ccopyTicket.ticket.Application}
+                                  copyField={() => this.props.copyField({
+                                      key: "Application",
+                                      value: this.props.ccopyTicket.ticket.Application
+                                  })}/>
+                      <FormField2 label="Workfolder" value={this.props.ccopyTicket.ticket.workfolder}
+                                  copyField={() => this.props.copyField({
+                                      key: "workfolder",
+                                      value: this.props.ccopyTicket.ticket.workfolder
+                                  })}/>
+                      <FormField2 label="State" value={this.props.ccopyTicket.ticket.status}
+                                  copyField={() => this.props.copyField({
+                                      key: "status",
+                                      value: this.props.ccopyTicket.ticket.status
+                                  })}/>
+
+                      <FormField2 label="Date Created" value={this.props.ccopyTicket.ticket.date_created}
+                                  copyField={() => this.props.copyField({
+                                      key: "date_created",
+                                      value: this.props.ccopyTicket.ticket.date_created
+                                  })}/>
+                      <FormField2 label="Problem Type" value={this.props.ccopyTicket.ticket.problem_type}
+                                  copyField={() => this.props.copyField({
+                                      key: "problem_type",
+                                      value: this.props.ccopyTicket.ticket.problem_type
+                                  })}/>
+                      <FormField2 label="Owner" value={this.props.ccopyTicket.ticket.owner}
+                                  copyField={() => this.props.copyField({
+                                      key: "owner",
+                                      value: this.props.ccopyTicket.ticket.owner
+                                  })}/>
+                      <FormField2 label="Queue" value={this.props.ccopyTicket.ticket.queue}
+                                  copyField={() => this.props.copyField({
+                                      key: "queue",
+                                      value: this.props.ccopyTicket.ticket.queue
+                                  })}/>
+                      <FormField2 label="Product" value={this.props.ccopyTicket.ticket.product}
+                                  copyField={() => this.props.copyField({
+                                      key: "product",
+                                      value: this.props.ccopyTicket.ticket.product
+                                  })}/>
+                  </Grid>
+
+
+              </Grid>
+              }
           </div>
         </Drawer>
       </div>

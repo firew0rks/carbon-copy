@@ -12,6 +12,11 @@ export default class CardSuggestions extends React.Component {
         super(props);
     }
 
+    suggestionSelected(suggestion){
+        this.props.setCCopyTicket(suggestion)
+        this.props.toggleCCopyOpen(true)
+    }
+
     render() {
         return <Card style={{marginRight: '10px', padding: 0}}>
             <CardContent style={{padding: '10px',height:'150px'}}>
@@ -39,7 +44,7 @@ export default class CardSuggestions extends React.Component {
             <CardActions style={{padding: 0}}>
                 <Grid container justify="flex-end">
                     <Button size="small"
-                            onClick={()=>this.props.setCCopyTicket(this.props.suggestion)}
+                            onClick={()=>this.suggestionSelected(this.props.suggestion)}
                     >Show More</Button>
                 </Grid>
             </CardActions>

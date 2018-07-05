@@ -27,6 +27,7 @@ class App extends Component {
     };
       this._setTicket = this._setTicket.bind(this);
       this.toggleDrawer = this.toggleDrawer.bind(this);
+      this._copyField = this._copyField.bind(this);
   }
 
     componentDidMount() {
@@ -98,12 +99,24 @@ class App extends Component {
     });
   };
 
-  render() {
+    toggleCCopyOpen (carbonCopyOpened)  {
+        this.setState({
+            // ticketDrawerOpened: !this.state.ticketDrawerOpened,
+            carbonCopyOpened,
+        });
+    };
+
+    _copyField(field){
+        let ticket=Object.assign({},this.state.selectedTicket);
+        ticket[field.key]=field.value
+        this.setState({selectedTicket:ticket});
+    }
+    render() {
     return (
       <div>
         <Myapps/>
         <Grid container justify="flex-end" style={{padding: '20px 40px'}}>
-          <Button variant="contained" color="primary" >Create Ticket</Button>
+          <Button variant="contained" color="primary" onClick={()=>this.toggleCCopyOpen()}>Create Ticket</Button>
         </Grid>
         <MyTables
             ticketsList={this.state.ticketsList}
@@ -111,6 +124,8 @@ class App extends Component {
             onOpen = {()=> this.toggleDrawer()}
             selectedTicket = {this.state.selectedTicket}
             setTicket = {this._setTicket}
+            toggleCCopyOpen={(set)=>this.toggleCCopyOpen(set)}
+            setCCopyTicket={(ticket)=>this._setCCopyTicket(ticket)}
         />
           <TicketDrawer
               onClose={() => this.toggleDrawer()}
@@ -118,8 +133,15 @@ class App extends Component {
               ticket={this.state.selectedTicket}
               ccopyTicketsList={this.state.ccopyTicketsList}
               setCCopyTicket={(ticket)=>this._setCCopyTicket(ticket)}
+              toggleCCopyOpen={(set)=>this.toggleCCopyOpen(set)}
+              ccopyTicket={this.state.ccopyTicket}
+
           />
-        <TicketDrawerDetails onClose={() => this.toggleDrawer()} carbonCopyOpened={this.state.carbonCopyOpened}/>
+        <TicketDrawerDetails onClose={() => this.toggleDrawer()} carbonCopyOpened={this.state.carbonCopyOpened}
+        ccopyTicket={this.state.ccopyTicket}
+        copyField={(field)=>{this._copyField(field)}}
+
+        />
       </div>
 
     );

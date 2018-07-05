@@ -25,6 +25,8 @@ class MyTables extends React.Component{
     this.props.setTicket(ticket);
     this.props.onOpen()
     this.props.getCCopySuggestions(ticket)
+    this.props.toggleCCopyOpen(false);
+    this.props.setCCopyTicket({})
   }
 
   render() {
