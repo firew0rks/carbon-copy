@@ -164,6 +164,8 @@ class App extends Component {
         <TicketDrawerDetails onClose={() => this.toggleDrawer()} carbonCopyOpened={this.state.carbonCopyOpened}
         ccopyTicket={this.state.ccopyTicket}
         copyField={(field)=>{this._copyField(field)}}
+                             setSelectedTicket={this._setTicket}
+                             selectedTicket={this.state.selectedTicket}
 
         />
       </div>
