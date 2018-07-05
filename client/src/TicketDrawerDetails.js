@@ -37,7 +37,7 @@ class TicketDrawer extends React.Component {
     return (
       <div>
 
-        <Drawer anchor="left" open={this.props.ccopyDrawerOpened} onClose={this.props.onClose()}
+        <Drawer anchor="left" open={this.props.carbonCopyOpened} onClose={() => this.props.onClose()}
                 variant="persistent"
         >
           <div style={{padding: '15px 25px', width: '650px'}}>
