@@ -14,6 +14,8 @@ import FormField2 from './FormField2';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
+import IconButton from '@material-ui/core/IconButton';
+import Close from '@material-ui/icons/Close';
 
 const styles = {
   root: {
@@ -38,6 +40,9 @@ class TicketDrawer extends React.Component {
         <Drawer anchor="left" open={this.props.carbonCopyOpened} onClose={() => this.props.onClose()}
                 variant="persistent"
         >
+          <IconButton style={{position: 'absolute', top: 2, right: 2}}>
+            <Close/>
+          </IconButton>
           <div style={{padding: '15px 25px', width: '650px'}}>
               {this.props.ccopyTicket.ticket &&
               <Grid container>
