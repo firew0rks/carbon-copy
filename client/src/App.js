@@ -11,6 +11,11 @@ import MyTables from './MyTables';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
 import TicketDrawerDetails from './TicketDrawerDetails';
+import Typography from '@material-ui/core/Typography';
+import Select from '@material-ui/core/es/Select/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class App extends Component {
 
@@ -115,8 +120,27 @@ class App extends Component {
     return (
       <div>
         <Myapps/>
-        <Grid container justify="flex-end" style={{padding: '20px 40px'}}>
-          <Button variant="contained" color="primary" onClick={()=>this.toggleCCopyOpen()}>Create Ticket</Button>
+        <Grid container justify="space-between" style={{padding: '20px 40px'}}>
+          <div style={{fontWeight: '300', fontSize: 40}}>
+            Ticket Data
+          </div>
+          <Button variant="contained" color="primary" style={{height: 20}}>Create Ticket</Button>
+        </Grid>
+        <Grid container>
+          <Grid item xs={2}>
+          </Grid>
+          <Grid item xs={8}>
+            <FormControl style={{minWidth: 120, marginRight: 20, marginLeft: 10}}>
+            <InputLabel htmlFor="demo-controlled-open-select">Filter By</InputLabel>
+            <Select inputProps={{name: 'Filter By', id: 'demo-controlled-open-select'}}></Select>
+            </FormControl>
+            <FormControl style={{minWidth: 120}}>
+              <InputLabel htmlFor="demo-controlled-open-select">Sort By</InputLabel>
+              <Select inputProps={{name: 'sort By', id: 'demo-controlled-open-select'}}></Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+          </Grid>
         </Grid>
         <MyTables
             ticketsList={this.state.ticketsList}

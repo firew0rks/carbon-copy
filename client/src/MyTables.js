@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { tickets } from './ticketData';
-
+import TablePagination from '@material-ui/core/TablePagination';
 
 
 class MyTables extends React.Component{
@@ -31,16 +31,16 @@ class MyTables extends React.Component{
 
   render() {
       return(
-      <Grid container justify="center" alignItems="center" style={{height: 'calc(100vh - 150px)'}}>
+      <Grid container justify="center" alignItems="center" style={{marginTop: 30}}>
           <Paper>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Ticket number</TableCell>
-                  <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Status</TableCell>
-                  <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Date created</TableCell>
-                  <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Problem abstract</TableCell>
-                  <TableCell style={{fontSize:20, fontWeight: 'bold'}}>Problem type</TableCell>
+                  <TableCell>Ticket number</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Date created</TableCell>
+                  <TableCell>Problem abstract</TableCell>
+                  <TableCell>Problem type</TableCell>
                 </TableRow>
               </TableHead>
                 <TableBody>
@@ -48,7 +48,7 @@ class MyTables extends React.Component{
                 {this.props.ticketsList
                     .map((ticket) => {
                   return(
-                    <TableRow
+                    <TableRow hover style={{cursor: 'pointer'}}
                     onClick={()=>{this._selectTicket(ticket)}}
                     >
                     <TableCell>INC{ticket.ticket_number}</TableCell>
@@ -62,6 +62,20 @@ class MyTables extends React.Component{
                     </TableBody>
 
                       </Table>
+            <TablePagination
+              component="div"
+              count={348}
+              rowsPerPage={10}
+              page={0}
+              backIconButtonProps={{
+                'aria-label': 'Previous Page',
+              }}
+              nextIconButtonProps={{
+                'aria-label': 'Next Page',
+              }}
+              onChangePage={() => {}}
+              onChangeRowsPerPage={() => {}}
+            />
           </Paper>
       </Grid>
     );
