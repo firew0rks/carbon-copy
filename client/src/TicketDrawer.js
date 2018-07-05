@@ -31,7 +31,7 @@ class TicketDrawer extends React.Component {
           <div style={{padding: '15px 25px'}}>
             <Grid container>
               <Grid item xs={12}>
-                <div style={{fontSize: 14, color: '#C6C6C6'}}>
+                <div style={{fontSize: 14, color: '#C6C6C6'} }>
                   Incident
                 </div>
                 <div style={{fontSize: 32}}>
