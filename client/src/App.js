@@ -10,6 +10,7 @@ import Myapps from './Myapps';
 import MyTables from './MyTables';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
+import TicketDrawerDetails from './TicketDrawerDetails';
 
 class App extends Component {
 
@@ -21,12 +22,12 @@ class App extends Component {
         ticketsList: [],
         selectedTicket:{},
         ccopyTicket:{},
-        ccopyTicketsList:[]
+        ccopyTicketsList:[],
+  carbonCopyOpened: false,
     };
       this._setTicket = this._setTicket.bind(this);
       this.toggleDrawer = this.toggleDrawer.bind(this);
   }
-
 
     componentDidMount() {
         this._getTickets()
@@ -93,12 +94,13 @@ class App extends Component {
     toggleDrawer ()  {
     this.setState({
       ticketDrawerOpened: !this.state.ticketDrawerOpened,
+      // carbonCopyOpened: !this.state.carbonCopyOpened,
     });
   };
 
   render() {
-      return (
-      <div className="App">
+    return (
+      <div>
         <Myapps/>
         <Grid container justify="flex-end" style={{padding: '20px 40px'}}>
           <Button variant="contained" color="primary" >Create Ticket</Button>
@@ -117,6 +119,7 @@ class App extends Component {
               ccopyTicketsList={this.state.ccopyTicketsList}
               setCCopyTicket={(ticket)=>this._setCCopyTicket(ticket)}
           />
+        <TicketDrawerDetails onClose={() => this.toggleDrawer()} carbonCopyOpened={this.state.carbonCopyOpened}/>
       </div>
 
     );
