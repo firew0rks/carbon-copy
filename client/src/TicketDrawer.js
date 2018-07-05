@@ -13,6 +13,8 @@ import Icon from '@material-ui/core/Icon';
 import FormField from './FormField';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import Close from '@material-ui/icons/Close';
 
 
 class TicketDrawer extends React.Component {
@@ -40,9 +42,11 @@ class TicketDrawer extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-
         <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={()=>this._closeTickets()}
                 variant="persistent">
+          <IconButton style={{position: 'absolute', top: 2, right: 2}} onClick={()=>this._closeTickets()}>
+            <Close/>
+          </IconButton>
           <div style={{padding: '15px 25px', width: '650px'}}>
             <div container justify="flex-start">
               <Grid item xs={12}>
