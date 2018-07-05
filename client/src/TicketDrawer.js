@@ -24,9 +24,18 @@ class TicketDrawer extends React.Component {
   };
   _closeTickets(){
       this.props.setCCopyTicket({})
-      this.props.onClose()
+      this.props.onClose(true)
+      this.props.toggleCCopyOpen(false)
 
   }
+
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
   render() {
     const { classes } = this.props;
     return (
@@ -46,15 +55,15 @@ class TicketDrawer extends React.Component {
               </Grid>
 
                 <Grid container>
-
-                {this.props.ccopyTicketsList
+                {(this.isEmpty(this.props.ccopyTicket)) && this.props.ccopyTicketsList
                     .map((suggestion)=>{
                     return (
                         <Grid item xs={4}>
                             <CardSuggestions
                                 suggestion={suggestion}
                                 setCCopyTicket={(ticket)=>{this.props.setCCopyTicket(ticket)}}
-                             />
+                                toggleCCopyOpen={(set)=>this.props.toggleCCopyOpen(set)}
+                            />
                         </Grid>
                     )
                     })
@@ -63,24 +72,28 @@ class TicketDrawer extends React.Component {
 
 
               <Grid container justify={'center'} style={{cursor: 'row-resize'}}>
-              <KeyboardArrowUp style={{color: '#C6C6C6'}}/>
-              </Grid>
-              <Divider style={{width: '100%', marginBottom: '20px'}}/>
+                  {(this.isEmpty(this.props.ccopyTicket)) &&
 
+                  <KeyboardArrowUp style={{color: '#C6C6C6'}}/>
+                  }
+              </Grid>
+                {(this.isEmpty(this.props.ccopyTicket)) &&
+                <Divider style={{width: '100%', marginBottom: '20px'}}/>
+                }
                 <FormField label="Problem Abstract" value={this.props.ticket.problem_abstract}/>
               <FormField label="Application" value={this.props.ticket.Application}/>
               <FormField label="Workfolder" value={this.props.ticket.workfolder}/>
               <FormField label="State" value={this.props.ticket.status}/>
-
-              <Paper>
-                <Tabs value={1} indicatorColor="primary" textColor="primary" centered >
-                  <Tab label="Automation" />
-                  <Tab label="Properties" />
-                  <Tab label="Resolution" />
-                  <Tab label="Activities" />
-                </Tabs>
-              </Paper>
-
+                {(this.isEmpty(this.props.ccopyTicket)) &&
+                <Paper>
+                    <Tabs value={1} indicatorColor="primary" textColor="primary" centered>
+                        <Tab label="Automation"/>
+                        <Tab label="Properties"/>
+                        <Tab label="Resolution"/>
+                        <Tab label="Activities"/>
+                    </Tabs>
+                </Paper>
+                }
               <FormField label="Date Created" value={this.props.ticket.date_created}/>
               <FormField label="Problem Type" value={this.props.ticket.problem_type}/>
               <FormField label="Owner" value={this.props.ticket.owner}/>

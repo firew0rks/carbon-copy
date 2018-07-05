@@ -16,8 +16,11 @@ export default class FormField extends React.Component {
                    fullWidth={true}
         />
       </Grid>
-      <IconButton aria-label="Add an alarm" style={{height: '24px', width: '24px'}}>
-        <ArrowFoward style={{fontSize: '16px'}}/>
+      <IconButton aria-label="Add an alarm" style={{height: '24px', width: '24px'}}
+      onClick={()=>this.props.copyField()}
+      >
+        <ArrowFoward style={{fontSize: '16px'}}
+        />
       </IconButton>
     </Grid>
   }
