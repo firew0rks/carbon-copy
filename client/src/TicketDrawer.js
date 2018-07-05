@@ -44,7 +44,7 @@ class TicketDrawer extends React.Component {
         <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={()=>this._closeTickets()}
                 variant="persistent">
           <div style={{padding: '15px 25px', width: '650px'}}>
-            <Grid container justify="flex-start">
+            <div container justify="flex-start">
               <Grid item xs={12}>
                 <div style={{fontSize: 14, color: '#C6C6C6'} }>
                   Incident
@@ -76,7 +76,6 @@ class TicketDrawer extends React.Component {
 
                   <KeyboardArrowUp style={{color: '#C6C6C6'}}/>
                   }
-              </Grid>
                 {(this.isEmpty(this.props.ccopyTicket)) &&
                 <Divider style={{width: '100%', marginBottom: '20px'}}/>
                 }
@@ -84,6 +83,10 @@ class TicketDrawer extends React.Component {
               <FormField label="Application" value={this.props.ticket.Application}/>
               <FormField label="Workfolder" value={this.props.ticket.workfolder}/>
               <FormField label="State" value={this.props.ticket.status}/>
+
+            </Grid>
+          </div>
+      </div>
                 {(this.isEmpty(this.props.ccopyTicket)) &&
                 <Paper>
                     <Tabs value={1} indicatorColor="primary" textColor="primary" centered>
@@ -94,6 +97,10 @@ class TicketDrawer extends React.Component {
                     </Tabs>
                 </Paper>
                 }
+            <div style={{padding: '15px 25px', width: '650px'}}>
+
+            <Grid container justify="flex-start">
+
               <FormField label="Date Created" value={this.props.ticket.date_created}/>
               <FormField label="Problem Type" value={this.props.ticket.problem_type}/>
               <FormField label="Owner" value={this.props.ticket.owner}/>
@@ -101,7 +108,7 @@ class TicketDrawer extends React.Component {
               <FormField label="Product" value={this.props.ticket.product}/>
 
             </Grid>
-          </div>
+            </div>
 
 
           {/*Tabs*/}
