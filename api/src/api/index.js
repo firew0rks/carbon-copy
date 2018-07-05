@@ -3,7 +3,7 @@ import {Router} from 'express';
 import fetch from 'node-fetch';
 
 const router = Router();
-const baseurl = 'http://localhost:9200';
+const baseurl = 'http://elasticsearch:9200';
 router.get('/getTicket', (request, response) => {
     const number = request.query.number;
     const url = baseurl+ '/ticket/_search?q=ticket_number:' + number;
