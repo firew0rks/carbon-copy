@@ -56,31 +56,43 @@ router.get('/getAllTickets', (request, response) => {
 router.put('/query', (request, response) => {
     const url = baseurl + '/ticket/_search?size=3';
     const problem_abstract = request.body.problem_abstract;
-    const query =
-        { "min_score":0.5,
-        "query": {
-        "bool": {
-            "must": [
-                {"match": {"problem_abstract":{
-                            "query":  problem_abstract,
-                            "fuzziness":2}
-                    }}],
-                "should": [
-                {
-                    "term": {
-                        "status": "Closed"
-                    }
-                },
-                {
-                    "term": {
-                        "status": "Resolved"
-                    }
+    const ticket_number = request.body.ticket_number;
+    const query = {
+            "min_score": 0.5,
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "match": {
+                                "problem_abstract": {
+                                    "query": problem_abstract,
+                                    "fuzziness": 2
+                                }
+                            }
+                        }
+                    ],
+                    "must_not": [
+                        {
+                            "term": {
+                                "ticket_number": ticket_number
+                            }
+                        }
+                    ],
+                    "should": [
+                        {
+                            "term": {
+                                "status": "Closed"
+                            }
+                        },
+                        {
+                            "term": {
+                                "status": "Resolved"
+                            }
+                        }
+                    ]
                 }
-            ]
-        }
-
-    }
-    };
+            }
+        };
     const options = {
         method: "POST",
         headers: {
