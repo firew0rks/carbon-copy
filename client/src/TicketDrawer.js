@@ -14,6 +14,7 @@ import FormField from './FormField';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import TextField from '@material-ui/core/TextField';
 
+
 class TicketDrawer extends React.Component {
   state = {
     right: false,
@@ -28,7 +29,9 @@ class TicketDrawer extends React.Component {
     return (
       <div>
 
-        <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={this.props.onClose()}>
+        <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={this.props.onClose()}
+                variant="persistent"
+        >
           <div style={{padding: '15px 25px', width: '650px'}}>
             <Grid container>
               <Grid item xs={12}>

@@ -10,6 +10,7 @@ import Myapps from './Myapps';
 import MyTables from './MyTables';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
+import TicketDrawerDetails from './TicketDrawerDetails';
 
 class App extends Component {
 
@@ -17,7 +18,8 @@ class App extends Component {
     // THIS IS A COMMENT
     super(props);
     this.state = {
-      ticketDrawerOpened: true
+      ticketDrawerOpened: true,
+      carbonCopyOpened: true
     };
   }
 
@@ -25,6 +27,7 @@ class App extends Component {
     console.log('here');
     this.setState({
       ticketDrawerOpened: !this.state.ticketDrawerOpened,
+      carbonCopyOpened: !this.state.carbonCopyOpened,
     });
   };
 
@@ -36,7 +39,9 @@ class App extends Component {
           <Button variant="contained" color="primary" onClick={this.toggleDrawer()}>Create Ticket</Button>
         </Grid>
         <MyTables/>
+
         <TicketDrawer onClose={() => this.toggleDrawer()} ticketDrawerOpened={this.state.ticketDrawerOpened}/>
+        <TicketDrawerDetails onClose={() => this.toggleDrawer()} ticketDrawerOpened={this.state.carbonCopyOpened}/>
 
       </div>
 
