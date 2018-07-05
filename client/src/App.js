@@ -39,7 +39,7 @@ class App extends Component {
     }
 
     _getTickets(){
-        const url = 'http://localhost/api/v1/getAllTickets';
+        const url = 'http://ec2-52-203-172-33.compute-1.amazonaws.com/api/v1/getAllTickets';
 
         // const query = {
         //     "query": {"term": {"status" : "Open"}}
@@ -64,7 +64,7 @@ class App extends Component {
     }
 
     _getCCopySuggestions(ticket){
-        const url = 'http://localhost/api/v1/query';
+        const url = 'http://ec2-52-203-172-33.compute-1.amazonaws.com/api/v1/query';
         const options = {
             method: "PUT",
             headers: {
@@ -114,10 +114,10 @@ class App extends Component {
           <Button variant="contained" color="primary" style={{height: 20}}>Create Ticket</Button>
         </Grid>
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={1}>
           </Grid>
           <Grid item xs={8}>
-            <FormControl style={{minWidth: 120, marginRight: 20, marginLeft: 10}}>
+            <FormControl style={{minWidth: 120, marginRight: 20, marginLeft: 8}}>
             <InputLabel htmlFor="demo-controlled-open-select">Filter By</InputLabel>
             <Select inputProps={{name: 'Filter By', id: 'demo-controlled-open-select'}}></Select>
             </FormControl>
@@ -126,7 +126,7 @@ class App extends Component {
               <Select inputProps={{name: 'sort By', id: 'demo-controlled-open-select'}}></Select>
             </FormControl>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
           </Grid>
         </Grid>
         <MyTables
