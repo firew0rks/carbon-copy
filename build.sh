@@ -20,7 +20,7 @@ run() {
   docker container run -d -p 5601:5601 -h kibana --name kibana --net ccopy docker.elastic.co/kibana/kibana:6.3.0
   docker container run -it -p 3000:3000 -p 35729:35729 -v $(pwd)/client:/app -d --net ccopy --name ccopy-client ccopy-client:0.0.1
   docker container run -it -p 8080:8080 -d --net ccopy --name ccopy-api ccopy-api:0.0.1
-  docker container run -d --name nginx -p 443:443 -p 80:80 -u 0 --restart unless-stopped --net ccopy local-nginx:latest
+  docker container run -d --name nginx -p 80:80 -u 0 --restart unless-stopped --net ccopy local-nginx:latest
 }
 
 case "$1" in
