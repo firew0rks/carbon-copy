@@ -1,18 +1,15 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Ticket from './Ticket.json';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import MyFormControl from './MyFormControl';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 
 
-class TempDrawer extends React.Component {
+class TicketDrawer extends React.Component {
   state = {
     right: false,
     createdDate: Ticket._source.date_created,
@@ -41,18 +38,31 @@ class TempDrawer extends React.Component {
             </h1>
             <div style={{ padding: 10, width: 500}}>
               <div>
-                <MyFormControl label= "Problem Abstract" field= {this.state.problemAbstract} handleChange= {this.handleChange}/>
+                <MyFormControl label= "Short Description" field= {this.state.problemAbstract} handleChange= {this.handleChange}/>
               </div>
               <div style={{paddingTop: 10}}>
                 <MyFormControl label= "Created Date" field= {this.state.createdDate} handleChange= {this.handleChange}/>
               </div>
               <div style={{paddingTop: 10}}>
-                <FormControl fullWidth={true}>
-                  <InputLabel htmlFor="name-simple" style={{fontSize: 20}}><b>Status</b></InputLabel>
-                  <Input id="name-simple" value={this.state.status} onChange={this.handleChange} />
-                </FormControl>
+                <MyFormControl label= "Status" field= {this.state.status} handleChange={this.handleChange}/>
               </div>
             </div>
+          </div>
+          <div style={{ left: '200px' }}>
+            <Paper>
+              <Tabs
+                value={this.state.value}
+                onChange={this.handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered>
+                <Tab label="Automation" />
+                <Tab label="Properties" />
+                <Tab label="Resolution" />
+                <Tab label="Suggestion" />
+                <Tab label="Activities" />
+              </Tabs>
+           </Paper>
           </div>
         </Drawer>
       </div>
@@ -60,4 +70,4 @@ class TempDrawer extends React.Component {
   }
 }
 
-export default TempDrawer;
+export default TicketDrawer;

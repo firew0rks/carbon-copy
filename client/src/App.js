@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Nav from './Nav';
-import color from '@material-ui/core/colors/indigo';
-import TempDrawer from './TempDrawer';
+import TicketDrawer from './TicketDrawer';
 
 class App extends Component {
 
@@ -18,7 +17,7 @@ class App extends Component {
       <div className="App">
         <h1 style= {{color: "#0EECE4"}}> WELCOME TO ATR </h1>
           <Nav/>
-          <TempDrawer/>
+          <TicketDrawer/>
       </div>
     );
   }
