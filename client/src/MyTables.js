@@ -67,9 +67,9 @@ class MyTables extends React.Component{
     }
   }
 
-  _randomSimilarity() {
+  _randomSimilarity(rand) {
     // Between 50 and 100
-    const rand = Math.floor(Math.random() * 51) + 50;
+    // const rand = Math.floor(Math.random() * 51) + 50;
 
     if (rand > 80) {
       return <SimilarityChip label={<b>{rand + '%'}</b>} style={{backgroundColor: '#5c6bc0', color: 'white'}}/>
@@ -85,7 +85,6 @@ class MyTables extends React.Component{
   }
 
   render() {
-      console.log('rendering');
       return(
       <Grid container justify="center" alignItems="center" style={{marginTop: 30}}>
           <Paper>
