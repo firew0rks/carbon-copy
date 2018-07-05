@@ -17,7 +17,7 @@ class App extends Component {
     // THIS IS A COMMENT
     super(props);
     this.state = {
-      ticketDrawerOpened: false
+      ticketDrawerOpened: true
     };
   }
 

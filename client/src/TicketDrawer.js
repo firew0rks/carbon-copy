@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import FormField from './FormField';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
+import TextField from '@material-ui/core/TextField';
 
 class TicketDrawer extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class TicketDrawer extends React.Component {
       <div>
 
         <Drawer anchor="right" open={this.props.ticketDrawerOpened} onClose={this.props.onClose()}>
-          <div style={{padding: '15px 25px'}}>
+          <div style={{padding: '15px 25px', width: '650px'}}>
             <Grid container>
               <Grid item xs={12}>
                 <div style={{fontSize: 14, color: '#C6C6C6'}}>
@@ -55,37 +56,31 @@ class TicketDrawer extends React.Component {
               <Grid container justify={'center'} style={{cursor: 'row-resize'}}>
               <KeyboardArrowUp style={{color: '#C6C6C6'}}/>
               </Grid>
-              <Divider style={{width: '100%'}}/>
+              <Divider style={{width: '100%', marginBottom: '20px'}}/>
 
-              {/*<FormField label={"hello"}/>*/}
-              {/*<FormField/>*/}
-              {/*<FormField/>*/}
-              {/*<FormField/>*/}
-              {/*<MyFormControl label= "Short Description" field= {this.state.problemAbstract} handleChange= {this.handleChange}/>*/}
+              <FormField label="Short Description" value="Hello World"/>
+              <FormField label="Application" value="Hello World"/>
+              <FormField label="Caller" value="Hello World"/>
+              <FormField label="State" value="Hello World"/>
+              <FormField label="Problem Abstract" value="Hello World"/>
 
+              <Paper>
+                <Tabs value={1} indicatorColor="primary" textColor="primary" centered >
+                  <Tab label="Automation" />
+                  <Tab label="Properties" />
+                  <Tab label="Resolution" />
+                  <Tab label="Activities" />
+                </Tabs>
+              </Paper>
+
+              <FormField label="Short Description" value="Hello World"/>
+              <FormField label="Application" value="Hello World"/>
+              <FormField label="Caller" value="Hello World"/>
+              <FormField label="State" value="Hello World"/>
+              <FormField label="Problem Abstract" value="Hello World"/>
 
             </Grid>
           </div>
-
-          {/*Romi's code*/}
-          {/*<div*/}
-            {/*tabIndex={0}*/}
-            {/*role="button">*/}
-            {/*<h1 style={{ fontSize: 20, fontStyle: 'bold', paddingLeft: 8 }}>*/}
-              {/*{Ticket._source.ticket_number}*/}
-            {/*</h1>*/}
-            {/*<div style={{ padding: 10}}>*/}
-              {/*<div>*/}
-                {/*<MyFormControl label= "Short Description" field= {this.state.problemAbstract} handleChange= {this.handleChange}/>*/}
-              {/*</div>*/}
-              {/*<div style={{paddingTop: 10}}>*/}
-                {/*<MyFormControl label= "Created Date" field= {this.state.createdDate} handleChange= {this.handleChange}/>*/}
-              {/*</div>*/}
-              {/*<div style={{paddingTop: 10}}>*/}
-                {/*<MyFormControl label= "Status" field= {this.state.status} handleChange={this.handleChange}/>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-          {/*</div>*/}
 
 
           {/*Tabs*/}
