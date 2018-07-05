@@ -33,7 +33,7 @@ class TicketDrawer extends React.Component {
                 variant="persistent"
         >
           <div style={{padding: '15px 25px', width: '650px'}}>
-            <Grid container>
+            <Grid container justify="flex-start">
               <Grid item xs={12}>
                 <div style={{fontSize: 14, color: '#C6C6C6'} }>
                   Incident

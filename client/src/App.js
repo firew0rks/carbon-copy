@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   toggleDrawer = (side, open) => () => {
-    console.log('here');
     this.setState({
       ticketDrawerOpened: !this.state.ticketDrawerOpened,
       carbonCopyOpened: !this.state.carbonCopyOpened,
@@ -33,7 +32,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Myapps/>
         <Grid container justify="flex-end" style={{padding: '20px 40px'}}>
           <Button variant="contained" color="primary" onClick={this.toggleDrawer()}>Create Ticket</Button>
